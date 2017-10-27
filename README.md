@@ -62,7 +62,8 @@
 -u/--nopw|允许外部访问|php tool.php -u<br>php tool.php --nopw
 -p/--pw|允许使用密码保护的外部访问<br>当没有设置密码时候使用默认密码123|php tool.php -p=123<br>php tool.php --pw=123<br>php tool.php -p ***(使用默认密码)***
 -b/--ban|不允许使用外部访问|php tool.php -b<br>php tool.php --ban
-
-
-
-
+##### 使用密码保护的外部访问
+访问 http://*your_domain or IP*/do.php?pw=*your_password*
+##### 外部访问的作用
+1. 立即更新服务器状态
+2. 使用云监控替代计划任务
