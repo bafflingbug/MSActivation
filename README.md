@@ -10,6 +10,7 @@
 
         cd /data/kms
         ./vlmcsd-x64-glibc &
+        php /data/kms/www/do.php
 
 4.  打开`corntab -e`(添加计划任务)
     添加
