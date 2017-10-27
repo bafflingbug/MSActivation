@@ -53,3 +53,16 @@
 6.  重启Nginx
 
         service nginx restart
+
+#### 使用tool.php
+用于设置外部访问do.php的权限 **(外部访问do.php可手动更新服务器状态)**  
+##### 参数说明
+参数|说明|示例
+:---|:---:|:---:
+-u/--nopw|允许外部访问|php tool.php -u<br>php tool.php --nopw
+-p/--pw|允许使用密码保护的外部访问<br>当没有设置密码时候使用默认密码123|php tool.php -p=123<br>php tool.php --pw=123<br>php tool.php -p ***(使用默认密码)***
+-b/--ban|不允许使用外部访问|php tool.php -b<br>php tool.php --ban
+
+
+
+

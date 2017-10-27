@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,mimimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Key Management Service state</title>
+    <title>Key Management Service Statue</title>
     <link rel="shortcut icon" href="static/ico/favicon.ico" type="image/x-icon">
     <style type="text/css">
         body {
@@ -116,7 +116,7 @@
                 $basedir = dirname(__FILE__);
                 $state_f = $basedir."/state";
                 $file = fopen($state_f, "r") or die("not find file:state");
-                $state = fread($file,filesize($state_f));
+                $state = fgets($file);
                 if(stripos($state,"online")!==false){
                     echo "正常";
                 } else {
@@ -126,7 +126,7 @@
         </div>
         <div class="description-sm">上次检查时间:
             <?php
-                $state = str_replace("online ","",$state);
+                $state = fgets($file);
                 echo $state;
                 fclose($file);
             ?>
