@@ -58,3 +58,6 @@
 ##### 外部访问的作用
 1. 立即更新服务器状态
 2. 使用云监控替代计划任务
+
+### Thanks
+[Wind4/vlmcsd](https://github.com/Wind4/vlmcsd):KMS Emulator in C
