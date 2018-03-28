@@ -10,32 +10,32 @@
 
         cd /data/kms
         nohup ./vlmcsd-x64-glibc > log.out 2>&1 &
-        php /data/kms/www/do.php
+        php /home/kms/www/do.php
 
 4.  打开`corntab -e`(添加计划任务)
     添加
 
-        */10 * * * * /usr/local/php5/bin/php /data/kms/www/do.php
+        */10 * * * * /usr/local/php5/bin/php /home/kms/www/do.php
 
 5.  配置Nginx反向代理
 
         server {
             listen       80;
-            server_name  kms.bafflingbug.cn;
+            server_name  example.com;
             
             location / {
-                root   /data/kms/www;
+                root   /home/kms/www;
                 index  index.php;
             }
             location = /50x.html {
                 root   /usr/local/nginx/html;
             }
             location ~ \.php$ {
-                root           /data/kms/www;
+                root           /home/kms/www;
                 fastcgi_param  HTTPS $https if_not_empty; 
                 fastcgi_pass   127.0.0.1:9000;
                 fastcgi_index  index.php;
-                fastcgi_param  SCRIPT_FILENAME  /data/kms/www/$fastcgi_script_name;
+                fastcgi_param  SCRIPT_FILENAME  /home/kms/www/$fastcgi_script_name;
                 include        fastcgi_params;
             }
         }
