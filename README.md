@@ -8,7 +8,7 @@
 
 3.  添加
 
-        cd /data/kms
+        cd /home/kms
         nohup ./vlmcsd-x64-glibc > log.out 2>&1 &
         php /home/kms/www/do.php
 
