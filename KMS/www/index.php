@@ -35,7 +35,7 @@
         </div>
         <div class="description-sm">服务器地址： 替换这些文字</div>
         <div class="links">
-            <a class="link" href="替换这些文字"></i>使用帮助</a>
+            <a class="link" href="替换这些文字">使用帮助</a>
         </div>
     </div>
 </div>
