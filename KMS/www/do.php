@@ -3,7 +3,7 @@
 $pw = '';
 $needpw = false;
 $http = true;
-$expire = 1200;
+$expire = 600;
 
 // is code
 define("isShell",!isset($_SERVER["HTTP_USER_AGENT"]));
@@ -14,41 +14,34 @@ include_once($cache_cf);
 if (!isset($c)) {
     $c = new cache();
 }
-$online_s = '';
-$time_s = '';
+$status = array('online' => false, 'check_time' => null);
 if(fromroot || isShell || $http && ($needpw === false || md5(md5($_REQUEST["pw"])) === $pw)){
 
     date_default_timezone_set("Asia/Shanghai");  
     $vlmcs_f = dirname($basedir)."/vlmcs-x64-glibc kms.bafflingbug.cn";
-    $state = false;
 
     $vlmcs_p = popen($vlmcs_f,"r") or die("not find file:vlmcs-x64-glibc");
     $return = fgets($vlmcs_p);
+    $status['check_time'] = date("Y/m/d H:i");
 
     echo HTMLecho(" ----- Waiting for server data ----- ");
     echo nextline();
     echo nextline();
 
     if(stripos($return,"successful")!==false){
-        $c->set('kms_status', 'online', $expire);
-        $c->set('kms_time', date("Y/m/d H:i"), $expire);
-        $online_s = 'online';
-        $time_s = date("Y/m/d H:i");
+        $status['online'] = true;
         echo HTMLecho("Server Status:Server online");
-        $state = true;
     } else {
-        $c->set('kms_status', 'offline', $expire);
-        $c->set('kms_time', date("Y/m/d H:i"), $expire);
-        $online_s = 'offline';
-        $time_s = date("Y/m/d H:i");
+        $status['online'] = false;
         echo HTMLecho("Server Status:Server offline");
-        $state = false;
     }
 
+    $c->set('kms_status', $status, $expire);
+
     echo nextline();
     echo nextline();
 
-    if($state){
+    if(isset($status['online']) && status['online']){
         echo HTMLecho("Server return :");
         echo nextline();
         $return = fgets($vlmcs_p);

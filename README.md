@@ -62,6 +62,13 @@
      $host|redis使用的域名或者ip|string
      $port|redis使用的端口|string
 
+3. index.php的配置
+
+     配置项|说明|类型
+     :---|:---:|:---:
+     $kms_path|kms服务器的url或者ip|string
+     $help_url|帮助页面的url|string
+
 ##### 使用密码保护的外部访问
 访问 http://*your_domain or IP*/do.php?pw=*your_password*
 ##### 外部访问的作用

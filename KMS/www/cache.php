@@ -18,7 +18,7 @@ class cache{
         }
 
         function set($key, $value=null, $expire=600){
-                return $this->redis->set($key, serialize($value), (time() + $expire));
+                return $this->redis->set($key, serialize($value), $expire);
         }
 
         function clear($keys){
